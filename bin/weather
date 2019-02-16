@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "weather"
+require "optparse"
+
+options = {}
+OptionParser.new do |opt|
+  opt.on('--service SERVICE') { |o| options[:service] = o }
+end.parse
+
