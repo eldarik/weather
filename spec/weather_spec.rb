@@ -1,9 +1,10 @@
 RSpec.describe Weather do
   it "has a version number" do
-    expect(Weather::VERSION).not_to be nil
+    is_asserted_by { Weather::VERSION != nil }
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  describe 'class methods' do
+    describe 'get_data_by_location' do
+    end
   end
 end
