@@ -1,5 +1,7 @@
 require "bundler/setup"
 require "weather"
+require "fixtures/test_http_client"
+require "fixtures/test_http_client/meta_weather"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

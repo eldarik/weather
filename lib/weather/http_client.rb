@@ -1,6 +1,6 @@
 require 'open-uri'
 
-module Geo::HttpClient
+module Weather::HttpClient
   def self.get(url)
     OpenURI.open_uri(url).read
   end
