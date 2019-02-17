@@ -14,11 +14,17 @@ class Weather::ApixuService < Weather::Service
         error: 'Please provider api key in ENV or in initilize'
       }
     end
-    response = http_client.get(url)
-    format_result(JSON.parse(response))
+
+    data = get_data(url)
+    format_result(data)
   end
 
   def format_result(data)
+    if data.nil?
+      return {
+        error: 'Error in Apixu api'
+      }
+    end
     {
       location: data.dig("location", "name"),
       temperature: data.dig("current", "temp_c"),

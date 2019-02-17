@@ -14,11 +14,16 @@ class Weather::MetaWeatherService < Weather::Service
 
   def get_data_by_location_id(location_id)
     url = URI.parse("#{BASE_URL}/api/location/#{location_id}")
-    response = http_client.get(url)
-    format_result(JSON.parse(response))
+    data = get_data(url)
+    format_result(data)
   end
 
   def format_result(data)
+    if data.nil?
+      return {
+        error: 'Error in MetaWeather api'
+      }
+    end
     weather = data["consolidated_weather"]&.first
     {
       location: data["title"],
