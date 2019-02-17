@@ -3,6 +3,7 @@ require "weather/http_client"
 require "weather/service"
 require "weather/meta_weather_service"
 require "weather/apixu_service"
+require "weather/service_factory"
 
 require "weather/cli"
 

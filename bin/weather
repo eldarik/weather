@@ -4,10 +4,9 @@ require "bundler/setup"
 require "weather"
 require "optparse"
 
+location = ARGV[-1]
 options = {}
 options_parser = nil
-
-location = ARGV[0]
 
 OptionParser.new do |op|
   op.banner = "Usage: weather [options] location(required)"

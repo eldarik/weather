@@ -10,7 +10,8 @@ describe Weather::Cli do
       describe '.new' do
         context 'service from avaiable' do
           let!(:service) { Weather::Cli.available_services.sample }
-          it_is_asserted_by { Weather::Cli::Cli.new(service).service_class != nil }
+
+          it_is_asserted_by { Weather::Cli::Cli.new(service).service != nil }
         end
       end
     end

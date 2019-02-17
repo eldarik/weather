@@ -15,6 +15,16 @@ class Weather::ApixuService < Weather::Service
       }
     end
     response = http_client.get(url)
-    JSON.parse(response)
+    format_result(JSON.parse(response))
+  end
+
+  def format_result(data)
+    {
+      location: data.dig("location", "name"),
+      temperature: data.dig("current", "temp_c"),
+      air_pressure: data.dig("current", "air_pressure"),
+      wind_speed: data.dig("current", "pressure_mb"),
+      humidity: data.dig("current", "humidity"),
+    }
   end
 end

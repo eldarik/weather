@@ -4,22 +4,17 @@ module Weather::Cli
   SERVICES = %w[apixu metaweather]
 
   class Cli
-    attr :service_class
-
+    attr :service
     def initialize(service)
-      @service_class =
-        case service
-        when 'apixu'
-          ::Weather::ApixuService
-        when 'metaweather'
-          ::Weather::MetaWeatherService
-        else
-          nil
-        end
+      @service = ::Weather::ServiceFactory.get(service)
     end
 
     def start(location)
-      service_class.new&.get_data_by_location(location)
+      if service.nil?
+        puts "Please choose service from list: #{SERVICES.join(', ')}"
+        return
+      end
+      puts JSON.pretty_generate service.get_data_by_location(location)
     end
   end
 

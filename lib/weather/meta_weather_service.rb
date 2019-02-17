@@ -15,6 +15,17 @@ class Weather::MetaWeatherService < Weather::Service
   def get_data_by_location_id(location_id)
     url = URI.parse("#{BASE_URL}/api/location/#{location_id}")
     response = http_client.get(url)
-    JSON.parse(response)
+    format_result(JSON.parse(response))
+  end
+
+  def format_result(data)
+    weather = data["consolidated_weather"]&.first
+    {
+      location: data["title"],
+      temperature: weather["the_temp"],
+      air_pressure: weather["air_pressure"],
+      wind_speed: weather["wind_speed"],
+      humidity: weather["humidity"],
+    }
   end
 end
