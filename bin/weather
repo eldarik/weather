@@ -14,7 +14,7 @@ OptionParser.new do |op|
   op.on(
     "--service SERVICE (required) avaibale services: #{Weather::Cli.available_services.join(', ')}"
   ) do |o|
-    options[:service] = o
+    options[:service_name] = o
   end
 
   op.on("-h", "--help", "print this help message.") do |h|
@@ -25,6 +25,10 @@ OptionParser.new do |op|
   op.on("--version", "show weather version") do |ver|
     puts "version: #{Weather::VERSION}"
     exit
+  end
+
+  op.on("--api_key API_KEY(required for apixu") do |o|
+    options[:api_key] = o
   end
 
   options_parser = op
@@ -40,4 +44,4 @@ if options.empty?
   exit
 end
 
-Weather::Cli::Cli.new(options[:service]).start(location)
+Weather::Cli::Cli.new(options).start(location)
