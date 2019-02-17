@@ -4,8 +4,9 @@ module Weather
   class Service
     attr :http_client
 
-    def initialize(http_client = Weather::HttpClient)
-      @http_client = http_client
+    def initialize(args = {})
+      @api_key = args[:api_key]
+      @http_client = args[:http_client] || Weather::HttpClient
     end
 
     def get_data_by_location(location)

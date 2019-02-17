@@ -11,4 +11,13 @@ module Weather
   class Error < StandardError; end
   # Your code goes here...
   #
+  class Forecast
+    def initialize(service_provider)
+      @service_provider = service_provider
+    end
+
+    def get_data_by_location(location)
+      @service_provider.get_data_by_location(location)
+    end
+  end
 end

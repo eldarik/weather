@@ -10,7 +10,7 @@ describe Weather::Service do
       context 'custom class passed' do
         let!(:http_client) { TestHttpClient }
         it_is_asserted_by do
-          described_class.new(http_client).http_client == http_client
+          described_class.new(http_client: http_client).http_client == http_client
         end
       end
     end

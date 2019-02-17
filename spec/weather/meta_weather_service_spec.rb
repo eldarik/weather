@@ -1,6 +1,6 @@
 describe Weather::MetaWeatherService do
   let!(:http_client) { TestHttpClient::MetaWeather }
-  let!(:subject) { described_class.new(http_client) }
+  let!(:subject) { described_class.new(http_client: http_client) }
   describe 'instance methods' do
     describe '#search_locations' do
       let!(:query) { 'foo' }
