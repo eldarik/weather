@@ -22,7 +22,7 @@ describe Weather::ApixuService do
   describe 'instance methods' do
     let!(:subject) { described_class.new(api_key, http_client) }
 
-    describe '.get_data_by_location' do
+    describe '#get_data_by_location' do
       let!(:location) { 'location' }
 
       it_is_asserted_by do
