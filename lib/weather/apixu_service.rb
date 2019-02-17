@@ -22,8 +22,8 @@ class Weather::ApixuService < Weather::Service
     {
       location: data.dig("location", "name"),
       temperature: data.dig("current", "temp_c"),
-      air_pressure: data.dig("current", "air_pressure"),
-      wind_speed: data.dig("current", "pressure_mb"),
+      air_pressure: data.dig("current", "pressure_mb"),
+      wind_speed: data.dig("current", "wind_kph"),
       humidity: data.dig("current", "humidity"),
     }
   end
