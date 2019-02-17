@@ -2,7 +2,7 @@ describe Weather::MetaWeatherService do
   let!(:http_client) { TestHttpClient::MetaWeather }
   let!(:subject) { described_class.new(http_client) }
   describe 'instance methods' do
-    describe '.search_locations' do
+    describe '#search_locations' do
       let!(:query) { 'foo' }
       let!(:expected) do
           [
@@ -20,11 +20,19 @@ describe Weather::MetaWeatherService do
       end
     end
 
-    describe '.get_data_by_location_id' do
+    describe '#get_data_by_location_id' do
       let!(:location_id) { '123123' }
 
       it_is_asserted_by do
         subject.get_data_by_location_id(location_id) != nil
+      end
+    end
+
+    describe '#get_data_by_location' do
+      let!(:location) { 'Moscow' }
+
+      it_is_asserted_by do
+        subject.get_data_by_location(location) != nil
       end
     end
   end

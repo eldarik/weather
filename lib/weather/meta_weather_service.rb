@@ -8,6 +8,8 @@ class Weather::MetaWeatherService < Weather::Service
   end
 
   def get_data_by_location(location)
+    locations = search_locations(location)
+    get_data_by_location_id(locations.first['woeid'])
   end
 
   def get_data_by_location_id(location_id)
