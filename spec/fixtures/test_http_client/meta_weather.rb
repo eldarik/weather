@@ -1,14 +1,15 @@
-module TestHttpClient::MetaWeather
+class TestHttpClient::MetaWeather
   def self.get(url)
-    case url
+    require 'pry'; binding.pry
+    case url.to_s
     when /api\/location\/search/
       location_response
-    when /api\/location\/d+/
+    when /api\/location\/\d+/
       weather_response
     end
   end
 
-  def location_response
+  def self.location_response
     [
       {
         "title": "Moscow",
@@ -19,7 +20,7 @@ module TestHttpClient::MetaWeather
     ].to_json
   end
 
-  def weather_response
+  def self.weather_response
     {
       "consolidated_weather": [
         {

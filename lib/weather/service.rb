@@ -1,3 +1,5 @@
+require 'json'
+
 module Weather
   class Service
     attr :http_client
