@@ -1,8 +1,6 @@
 # Weather
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/weather`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+With Weather you can get weather for location IP via [apixu](https://apixu.com/my/) or [metaweather](https://metaweather.com/api/).
 
 ## Installation
 
@@ -21,8 +19,31 @@ Or install it yourself as:
     $ gem install weather
 
 ## Usage
+Has cli
+```
+$ weather --service apixu London
+{
+  "location": "London",
+  "temperature": 13.0,
+  "air_pressure": 1015.0,
+  "wind_speed": 19.1,
+  "humidity": 58
+}
 
-TODO: Write usage instructions here
+$ weather --service metaweather London
+{
+  "location": "London",
+  "temperature": 12.115,
+  "air_pressure": 1021.72,
+  "wind_speed": 13.61,
+  "humidity": 74
+}
+$ weather --help
+Usage: weather [options] location(required)
+        --service SERVICE (required) avaibale services: apixu, metaweather
+    -h, --help                       print this help message.
+        --version                    show weather version
+```
 
 ## Development
 
