@@ -5,6 +5,40 @@ require "weather"
 require "optparse"
 
 options = {}
-OptionParser.new do |opt|
-  opt.on('--service SERVICE') { |o| options[:service] = o }
-end.parse
+options_parser = nil
+
+location = ARGV[0]
+
+OptionParser.new do |op|
+  op.banner = "Usage: weather [options] location(required)"
+
+  op.on(
+    "--service SERVICE (required) avaibale services: #{Weather::Cli.available_services.join(', ')}"
+  ) do |o|
+    options[:service] = o
+  end
+
+  op.on("-h", "--help", "print this help message.") do |h|
+    puts op
+    exit
+  end
+
+  op.on("--version", "show weather version") do |ver|
+    puts "version: #{Weather::VERSION}"
+    exit
+  end
+
+  options_parser = op
+end.parse!
+
+unless location
+  puts options_parser
+  exit
+end
+
+if options.empty?
+  puts options_parser
+  exit
+end
+
+Weather::Cli::Cli.new(options[:service]).start(location)
