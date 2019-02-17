@@ -1,6 +1,5 @@
 class TestHttpClient::MetaWeather
   def self.get(url)
-    require 'pry'; binding.pry
     case url.to_s
     when /api\/location\/search/
       location_response

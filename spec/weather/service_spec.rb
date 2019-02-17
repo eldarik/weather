@@ -14,12 +14,14 @@ describe Weather::Service do
         end
       end
     end
+  end
 
-    describe 'instance methods' do
-      describe '#get_data_by_location' do
-        it do
-          expect { described_class.new.get_data_by_location('foo') }.to raise_error(NotImplementedError)
-        end
+  describe 'instance methods' do
+    describe '#get_data_by_location' do
+      it do
+        expect {
+          described_class.new.get_data_by_location('foo')
+        }.to raise_error(NotImplementedError)
       end
     end
   end
