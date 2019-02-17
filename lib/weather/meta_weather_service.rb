@@ -29,8 +29,12 @@ class Weather::MetaWeatherService < Weather::Service
       location: data["title"],
       temperature: weather["the_temp"],
       air_pressure: weather["air_pressure"],
-      wind_speed: weather["wind_speed"],
+      wind_speed: mph_to_kph(weather["wind_speed"]&.to_f),
       humidity: weather["humidity"],
     }
+  end
+
+  def mph_to_kph(value = 0.0)
+    (value * 1.609).round(2)
   end
 end
