@@ -9,8 +9,6 @@ require "weather/cli"
 
 module Weather
   class Error < StandardError; end
-  # Your code goes here...
-  #
   class Forecast
     def initialize(service_provider)
       @service_provider = service_provider
